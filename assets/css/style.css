@@ -544,4 +544,64 @@ audio {
     border-color: #ff4444 !important;
     /* Destaque em vermelho ao passar o mouse */
 }
+/* === AJUSTES EXCLUSIVOS PARA MOBILE (CELULARES) === */
+@media (max-width: 768px) {
+
+    /* Ajusta o fundo para usar a altura dinâmica (evita cortes de barras) */
+    #desktop-screen {
+        height: 100dvh !important; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza horizontalmente */
+        justify-content: flex-start;
+        overflow-y: auto;
+        padding-bottom: 80px; /* Espaço extra para não bater na barra de baixo */
+    }
+
+    /* Centraliza a grade de ícones */
+    .icon-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; 
+        gap: 15px !important;
+        padding: 20px !important;
+        width: 100%;
+        max-width: 400px; /* Limita a largura para os ícones não espalharem demais */
+        justify-items: center; /* Centraliza os ícones na grade */
+        margin: 0 auto !important;
+    }
+
+    /* Ajuste da Janela Interna (Folder View) */
+    .window {
+        width: 92vw !important;
+        left: 4vw !important;
+        top: 5dvh !important; /* Começa um pouco abaixo do topo */
+        height: 70dvh !important; /* Reduzi de 80 para 70 para fugir da barra inferior */
+        max-height: 70dvh !important;
+    }
+
+    /* Melhora a visualização dos arquivos dentro da janela */
+    .file-grid-layout {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no celular fica mais limpo */
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+
+    /* Alerta Biométrico centralizado no meio da tela útil */
+    .bio-window {
+        width: 85% !important;
+        position: fixed !important;
+        top: 40% !important; /* Sobe um pouco para não bater na barra de baixo */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    
+    /* Garante que o ícone da nuvem (Cloud) não suma */
+    .icon-right {
+        position: relative !important;
+        top: 20px !important;
+        right: 0 !important;
+        margin: 0 auto 40px auto !important;
+    }
+}
 
