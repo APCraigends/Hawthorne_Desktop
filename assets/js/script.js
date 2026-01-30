@@ -88,11 +88,24 @@ function goBack(rootId) {
 // === LEITOR PDF ===
 
 function openPDF(fileName) {
-    const viewer = document.getElementById('win-pdf-viewer');
-    document.getElementById('pdf-frame').src = 'assets/docs/' + fileName;
-    document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
-    viewer.classList.remove('hidden');
+    const isMobile = window.innerWidth <= 768;
+    const pdfPath = window.location.origin + window.location.pathname.replace('index.html', '') + 'assets/docs/' + fileName;
     
+    // Esse link do Google força a visualização do PDF sem baixar, funciona no Firefox e Chrome
+    const googleViewer = `https://docs.google.com/viewer?url=${encodeURIComponent(pdfPath)}&embedded=true`;
+
+    if (isMobile) {
+        // No celular, se o Firefox falhar, abrimos em aba nova com o visualizador do Google
+        window.open(googleViewer, '_blank');
+    } else {
+        // No Notebook (Notebook), usamos a janela interna mas com o visualizador do Google para evitar tela preta
+        const viewer = document.getElementById('win-pdf-viewer');
+        const frame = document.getElementById('pdf-frame');
+        
+        frame.src = googleViewer;
+        document.getElementById('pdf-title').textContent = "SECURE_VIEWER // " + fileName;
+        viewer.classList.remove('hidden');
+    }
 }
 // === ERRO BIOMÉTRICO ===
 function triggerBiometricError(folderName) {
