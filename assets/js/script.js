@@ -86,7 +86,7 @@ function goBack(rootId) {
 }
 
 // === LEITOR PDF ===
-// === LEITOR PDF ===
+
 function openPDF(fileName) {
     const viewer = document.getElementById('win-pdf-viewer');
     document.getElementById('pdf-frame').src = 'assets/docs/' + fileName;
