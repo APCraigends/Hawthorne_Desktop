@@ -193,11 +193,10 @@ function triggerLockedZip() {
     modal.classList.remove('hidden');
 }
 // === LEITOR PDF INTELIGENTE ===
-// === LEITOR PDF ===
+
 function openPDF(fileName) {
     const viewer = document.getElementById('win-pdf-viewer');
     document.getElementById('pdf-frame').src = 'assets/docs/' + fileName;
     document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
-    viewer.classList.remove('hidden');
-    
+    viewer.classList.remove('hidden');    
 }
