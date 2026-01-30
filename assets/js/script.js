@@ -86,30 +86,14 @@ function goBack(rootId) {
 }
 
 // === LEITOR PDF ===
-// === LEITOR PDF INTELIGENTE ===
+// === LEITOR PDF ===
 function openPDF(fileName) {
-    // Detecta se é dispositivo móvel (largura menor que 768px)
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-        // No celular, abre direto numa nova aba (o navegador gerencia ou baixa)
-        // Isso evita a tela branca do iframe
-        window.open('assets/docs/' + fileName, '_blank');
-    } else {
-        // No computador, abre a janela bonitinha simulada
-        const viewer = document.getElementById('win-pdf-viewer');
-        // Resetar o src antes para evitar mostrar o PDF anterior enquanto carrega
-        document.getElementById('pdf-frame').src = '';
-
-        setTimeout(() => {
-            document.getElementById('pdf-frame').src = 'assets/docs/' + fileName;
-        }, 10);
-
-        document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
-        viewer.classList.remove('hidden');
-    }
+    const viewer = document.getElementById('win-pdf-viewer');
+    document.getElementById('pdf-frame').src = 'assets/docs/' + fileName;
+    document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
+    viewer.classList.remove('hidden');
+    
 }
-
 // === ERRO BIOMÉTRICO ===
 function triggerBiometricError(folderName) {
     closeAll();
