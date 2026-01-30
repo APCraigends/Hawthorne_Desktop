@@ -105,30 +105,23 @@ button:hover {
 }
 
 /* === DESKTOP (Fundo Preto Sólido) === */
-/* Ajusta o fundo para usar a altura dinâmica (evita cortes de barras) */
-    #desktop-screen {
-        height: 100dvh !important; 
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centraliza horizontalmente */
-        justify-content: flex-start;
-        overflow-y: auto;
-        padding-bottom: 80px; /* Espaço extra para não bater na barra de baixo */
-    }
+#desktop-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    /* Alterado para preto sólido */
+    position: relative;
+}
 
-
- /* Centraliza a grade de ícones */
-    .icon-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 15px !important;
-        padding: 20px !important;
-        width: 100%;
-        max-width: 400px; /* Limita a largura para os ícones não espalharem demais */
-        justify-items: center; /* Centraliza os ícones na grade */
-        margin: 0 auto !important;
-    }
-
+.icon-grid {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 90vh;
+    align-content: flex-start;
+    gap: 30px;
+}
 
 .desktop-icon {
     text-align: center;
@@ -183,12 +176,18 @@ button:hover {
 
 /* === JANELAS === */
 .window {
-        width: 92vw !important;
-        left: 4vw !important;
-        top: 5dvh !important; /* Começa um pouco abaixo do topo */
-        height: 70dvh !important; /* Reduzi de 80 para 70 para fugir da barra inferior */
-        max-height: 70dvh !important;
-    }
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 700px;
+    background: #181818;
+    border: 1px solid #333;
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
 
 .pdf-window {
     width: 850px;
@@ -199,10 +198,10 @@ button:hover {
 
 /* Força o iframe a ocupar todo o espaço do window-content */
 #pdf-frame {
-    width: 100% !important;
-    height: 100% !important;
-    border: none !important;
-    flex-grow: 1 !important;
+    width: 100%;
+    height: 100%;
+    flex: 1;                 /* Garante que ele estique */
+    border: none;
 }
 
 /* Cabeçalho da Janela mais profissional */
@@ -242,12 +241,12 @@ button:hover {
     max-height: none;
 }
 
-/* Isso garante que a janela de PDF no Notebook/Desktop não fique preta */
-.window-content.no-padding {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important; /* Crítico para o Notebook */
-    flex: 1 !important;
+.window-content {
+    flex: 1;                 /* ADICIONADO: Força a crescer até o fim da janela */
+    display: flex;           /* ADICIONADO */
+    flex-direction: column;  /* ADICIONADO */
+    background: #111;
+    overflow: hidden;        /* PDFs já tem sua própria rolagem */
 }
 
 /* Botão de fechar estilo Minimalist/Windows */
@@ -313,12 +312,15 @@ button:hover {
 /* Grid para arquivos e fotos */
 /* Container que segura os ícones dentro da janela */
 .file-grid-layout {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no celular fica mais limpo */
-        gap: 10px !important;
-        padding: 10px !important;
-    }
-
+    display: flex !important;
+    flex-direction: row !important; /* Força os ícones a ficarem lado a lado */
+    flex-wrap: wrap !important;    /* Permite que eles pulem para a linha de baixo */
+    gap: 15px;                      /* Espaço entre os ícones */
+    padding: 20px;                  /* Espaço nas bordas da janela */
+    align-content: flex-start;
+    overflow-y: auto;               /* Cria barra de rolagem se tiver muitos itens */
+    height: 100%;                   /* Ocupa a altura total disponível */
+}
 
 /* Estilo dos itens de arquivo */
 .file-item {
@@ -437,14 +439,14 @@ button:hover {
 }
 
 /* Janela de Erro Biométrica */
-/* Alerta Biométrico centralizado no meio da tela útil */
-    .bio-window {
-        width: 85% !important;
-        position: fixed !important;
-        top: 40% !important; /* Sobe um pouco para não bater na barra de baixo */
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
+.bio-window {
+    width: 320px;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ff4444;
+    z-index: 990;
+}
 
 .error-header {
     background: #1a0000;
@@ -569,14 +571,12 @@ audio {
     }
     
     /* Esconde o ícone da nuvem da direita para não encavalar */
-    /* Garante que o ícone da nuvem (Cloud) não suma */
     .icon-right {
-        position: relative !important;
-        top: 20px !important;
-        right: 0 !important;
-        margin: 0 auto 40px auto !important;
+        position: relative;
+        top: 0; right: 0;
+        margin: 20px auto;
     }
-
+}
 .browser-window {
     width: 90vw;
     height: 85vh;
@@ -608,18 +608,19 @@ audio {
 @media (max-width: 768px) {
 
     /* 1. GRADE DE ÍCONES DA ÁREA DE TRABALHO */
-   /* Ajuste para o Firefox Mobile não "esmagar" os ícones */
+    /* Agora com 3 colunas para os ícones não ficarem gigantes */
     .icon-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(80px, 1fr)) !important;
-        grid-auto-rows: min-content !important;
+        grid-template-columns: repeat(3, 1fr) !important; 
         gap: 15px !important;
         padding: 20px !important;
+        height: auto !important;
+        align-content: start !important;
     }
 
     .desktop-icon {
-        width: auto !important;
-        min-height: 90px !important;
+        width: 100% !important;
+        padding: 5px !important;
     }
 
     .desktop-icon img {
