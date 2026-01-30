@@ -542,7 +542,68 @@ audio {
     border-color: #ff4444 !important;
     /* Destaque em vermelho ao passar o mouse */
 }
+/* Ajustes para Celular e Tablet */
+@media (max-width: 768px) {
+    .icon-grid {
+        padding: 20px;
+        gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 ícones por linha */
+        height: auto;
+    }
 
+    .desktop-icon {
+        width: 100% !important;
+        padding: 5px;
+    }
+
+    .desktop-icon img { width: 40px; }
+    .desktop-icon span { font-size: 0.6rem; }
+
+    /* Janelas ocupam a tela toda no celular */
+    .window {
+        width: 95vw !important;
+        height: 80vh !important;
+        left: 2.5vw !important;
+        top: 5vh !important;
+    }
+    
+    /* Esconde o ícone da nuvem da direita para não encavalar */
+    /* Garante que o ícone da nuvem (Cloud) não suma */
+    .icon-right {
+        position: relative !important;
+        top: 20px !important;
+        right: 0 !important;
+        margin: 0 auto 40px auto !important;
+    }
+
+.browser-window {
+    width: 90vw;
+    height: 85vh;
+    top: 5%;
+    left: 5%;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4CAF50; /* Verde conexão ativa */
+    border-radius: 50%;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+/* Garante que o conteúdo preencha tudo */
+.no-padding {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+}
 /* === AJUSTES EXCLUSIVOS PARA O DESKTOP NO CELULAR (index.html) === */
 @media (max-width: 768px) {
 
@@ -646,61 +707,4 @@ audio {
         height: 60vh !important;
         top: 20% !important;
     }
-     /* Ajusta o fundo para usar a altura dinâmica (evita cortes de barras) */
-    #desktop-screen {
-        height: 100dvh !important; 
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centraliza horizontalmente */
-        justify-content: flex-start;
-        overflow-y: auto;
-        padding-bottom: 80px; /* Espaço extra para não bater na barra de baixo */
-    }
-
-    /* Centraliza a grade de ícones */
-    .icon-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 15px !important;
-        padding: 20px !important;
-        width: 100%;
-        max-width: 400px; /* Limita a largura para os ícones não espalharem demais */
-        justify-items: center; /* Centraliza os ícones na grade */
-        margin: 0 auto !important;
-    }
-
-    /* Ajuste da Janela Interna (Folder View) */
-    .window {
-        width: 92vw !important;
-        left: 4vw !important;
-        top: 5dvh !important; /* Começa um pouco abaixo do topo */
-        height: 70dvh !important; /* Reduzi de 80 para 70 para fugir da barra inferior */
-        max-height: 70dvh !important;
-    }
-
-    /* Melhora a visualização dos arquivos dentro da janela */
-    .file-grid-layout {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no celular fica mais limpo */
-        gap: 10px !important;
-        padding: 10px !important;
-    }
-
-    /* Alerta Biométrico centralizado no meio da tela útil */
-    .bio-window {
-        width: 85% !important;
-        position: fixed !important;
-        top: 40% !important; /* Sobe um pouco para não bater na barra de baixo */
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-    
-    /* Garante que o ícone da nuvem (Cloud) não suma */
-    .icon-right {
-        position: relative !important;
-        top: 20px !important;
-        right: 0 !important;
-        margin: 0 auto 40px auto !important;
-    }
-
 }
