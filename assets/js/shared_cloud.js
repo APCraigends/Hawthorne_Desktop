@@ -97,7 +97,24 @@ function openImage(filename) {
     `;
     modal.classList.remove('hidden');
 }
+function openPDF(fileName) {
+    const isMobile = window.innerWidth <= 768;
+    // URL completa do seu arquivo no GitHub
+    const rawUrl = 'https://apcraigends.github.io/Hawthorne_Desktop/assets/docs/' + fileName;
 
+    if (isMobile) {
+        window.open(rawUrl, '_blank');
+    } else {
+        const viewer = document.getElementById('win-pdf-viewer');
+        const iframe = document.getElementById('pdf-frame');
+        
+        // Usando o gview para renderizar o PDF de forma embutida
+        iframe.src = 'https://docs.google.com/gview?url=' + encodeURIComponent(rawUrl) + '&embedded=true';
+
+        document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
+        viewer.classList.remove('hidden');
+    }
+}
 // --- LÓGICA DE ZOOM E MAXIMIZAR ---
 
 function toggleTools(show) {
