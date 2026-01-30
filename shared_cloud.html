@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawthorne Consulting | Secure Share</title>
+    <link rel="stylesheet" href="assets/css/shared_cloud.css">
+    <!-- Fonte Premium/Clean -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="brand">
+            <div class="logo-circle">H</div>
+            <span>HAWTHORNE<br>CONSULTING</span>
+        </div>
+
+        <!-- BARRA LATERAL ATUALIZADA -->
+        <div>
+            <ul class="menu">
+                <li class="active" onclick="filterFiles('all')">All Files</li>
+                <li onclick="filterFiles('audio')">Audios</li>
+                <li onclick="filterFiles('image')">Evidences</li>
+                <li onclick="filterFiles('doc')">Documents</li>
+                <li onclick="filterFiles('media')">Media Exposure</li>
+                <ul>
+        </div>
+
+       
+    </nav>
+
+
+    <main class="main-area">
+        <header>
+            <div class="breadcrumbs">
+                <span>Shared</span> <span class="arrow">></span> <span>Project_Finch</span> <span class="arrow">></span>
+                <span class="current">Evidence_Locker</span>
+            </div>
+        </header>
+
+        <section class="file-grid">
+
+            <!-- 1 INÍCIO DA FARÇA: Emboscada no Ledger -->
+            <div class="file-card media-file" onclick="openImage('Surveillance_Ledger.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Surveillance_Ledger.jpg</span>
+                    <span class="meta">Added by D.H.: Freeze frame of viral video for analysis purpose.</span>
+                </div>
+            </div>
+
+            <!-- 2 DECLARAÇÃO OFICIAL: Daniel na TV -->
+            <div class="file-card media-file" onclick="openImage('News_Feed_Rec.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Official_Statement.jpg</span>
+                    <span class="meta">Added by D.H.: Freeze frame press conference - Damage control</span>
+                </div>
+            </div>
+
+            <!-- 3 VALIDACAO SOCIAL: A Gala -->
+            <div class="file-card media-file" onclick="openImage('The_Gryff_Childens_Trust_Gala.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Gala_Children_Trust.jpg</span>
+                    <span class="meta">Added by D.H.: First act of the forbidden alliance </span>
+                </div>
+            </div>
+
+            <!-- 4 OPERAÇÃO BRAVURSKA (A conexão brasileira) -->
+            <div class="file-card image-file" onclick="window.open('Bravurska.html')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/html_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Bravurska Investigation.html</span>
+                    <span class="meta">Added by C.S.: Written in PT-BR. Use automatic translation</span>
+                </div>
+            </div>
+
+            <!-- 5 RED FLAGS: Estrutura de Pagamento (Bravursca x Offshores) -->
+            <div class="file-card doc-file"
+                onclick="window.open('assets/docs/Payment_Structure_Draft_v3.pdf', '_blank')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/pdf_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">AF_Payment_Offshores.pdf</span>
+                    <span class="meta">Added by D.H.</span>
+                </div>
+            </div>
+
+            <!-- 6 E-MAIL DO JORNALISTA: O Incêndio de Sintra -->
+            <div class="file-card image-file" onclick="openImage('ASM_email_jornalista_aposentado.jpg')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Email Screenshot.png</span>
+                    <span class="meta">Added by C.S.: First lead and possible name of Silva.</span>
+                </div>
+            </div>
+
+            <!-- 7 CONTEXTO PORTUGAL: O passado de Silva (Tribuna do Porto) -->
+            <div class="file-card image-file" onclick="openImage('ASM_tribuna_do_porto.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">ASM_Newspaper_Evd_1.png</span>
+                    <span class="meta">Added by C.S.</span>
+                </div>
+            </div>
+
+            <!-- 8 CONTEXTO PORTUGAL: O passado de Silva (Diario Douro) -->
+            <div class="file-card image-file" onclick="openImage('ASM_Diario_Douro.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">SM_Newspaper_Evd_2.png</span>
+                    <span class="meta">Added by C.S.</span>
+                </div>
+            </div>
+
+            <!-- 9 O AUGE DA FARÇA: Scan do Social Diary (Tango) -->
+            <div class="file-card media-file" onclick="openImage('Intel_SocialDiary_Scan.jpg')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Social_Diary_Scan.jpg</span>
+                    <span class="meta">Added by D.H.</span>
+                </div>
+            </div>
+
+            <!-- 10 O ATENTADO: Santa Apolónia -->
+            <div class="file-card media-file" onclick="openImage('Media_Intel_PT_Broadcast.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Lisbon_Incident_Report.jpg</span>
+                    <span class="meta">Added by D.H.: Crisis alert. Target: C.S. Location: Lisbon.</span>
+                </div>
+            </div>
+
+            <!-- 11 DarkWeb (Entra antes da contagem) -->
+            <div class="file-card image-file" onclick="window.open('Darkweb.html')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/html_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Dark Web.html</span>
+                    <span class="meta">Added by C.S.: Golden Circle DW mention.</span>
+                </div>
+            </div>
+
+            <!-- 11.1 The 1% Lounge -->
+            <div class="file-card image-file" onclick="window.open('The_Lounge.html')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/html_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">The 1% Lounge.html</span>
+                    <span class="meta">Added by C.S.: Wolf's Club and ASM mentions.</span>
+                </div>
+            </div>
+
+            <!-- 12 A PROVA: Áudio da Contagem (Wolf Club) -->
+            <div class="file-card audio-file" onclick="playAudio('WolfClub_Transaction.mp3', 'Wolf Club - The Count')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/audio_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">WolfClub_Transaction.mp3</span>
+                    <span class="meta">Added by D.H.: Audio retrieved from cuffs. </span>
+                </div>
+            </div>
+
+            <!-- 13 A CONFISSÃO DO PEREIRA (Áudio do Acidente) -->
+            <div class="file-card audio-file"
+                onclick="playAudio('Pereira_Acidente_EN125_bkp.mp3', 'Bus Crash - Evidence')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/audio_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Pereira EN125 BKP.mp3</span>
+                    <span class="meta">Added by C.S.</span>
+                </div>
+            </div>
+
+            <!-- === PROVOCAÇÕES FINAIS (Pós-Relacionamento) === -->
+
+            <!-- 14 DANIEL TURISTA -->
+            <div class="file-card media-file" onclick="openImage('Evid_Lousa_Location.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">World's Worst Tourist.jpg</span>
+                    <span class="meta">Added by C.S.</span>
+                </div>
+            </div>
+
+            <!-- 15 GUERRA DE ÁGUA -->
+            <div class="file-card media-file" onclick="openImage('Sec_Cam_Quinta_Anomaly.png')">
+                <div class="file-preview standard-bg"><img src="assets/images/icons/Image_icon.png" class="icon-img">
+                </div>
+                <div class="file-info">
+                    <span class="filename">Hawthorne Bloodbath.jpg</span>
+                    <span class="meta">Added by C.S.:Just a sample as a reminder, original video is safe and secure
+                        elsewhere.</span>
+                </div>
+            </div>
+
+
+            <!-- 16 O DOSSIÊ FINAL: Alavancagem (BLOQUEADO/ENFEITE) -->
+            <div class="file-card doc-file" onclick="triggerLockedZip()">
+                <div class="file-preview standard-bg" style="position: relative;">
+                    <img src="assets/images/icons/zip_icon.png" class="icon-img">
+                    <!-- Ícone de bloqueio de hardware -->
+                    <span style="position: absolute; bottom: 8px; right: 8px; font-size: 1.2rem;">🔐</span>
+                </div>
+                <div class="file-info">
+                    <span class="filename">Leverage.zip</span>
+                    <span class="meta" style="color: #ff6b6b;">[Encrypted: Client-Side Token Req.]</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- MODAL (Onde os arquivos abrem) -->
+    <div id="modal-overlay" class="hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <span id="modal-title">File Preview</span>
+                <div class="modal-controls">
+                    <button id="btn-zoom-in" onclick="zoomImage(1.2)" class="tool-btn" title="Aumentar">+</button>
+                    <button id="btn-zoom-out" onclick="zoomImage(0.8)" class="tool-btn" title="Diminuir">-</button>
+                    <button id="btn-maximize" onclick="toggleMaximize()" class="tool-btn" title="Tela Cheia">⛶</button>
+                    <button onclick="closeModal()" class="close-btn">✕</button>
+                </div>
+            </div>
+
+            <div class="modal-body" id="modal-content">
+                <!-- Conteúdo injetado via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/shared_cloud.js"></script>
+</body>
+
+</html>

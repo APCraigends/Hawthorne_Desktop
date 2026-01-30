@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="A. P. Craigends">
+    <title>DH | Private Terminal</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- === TELA DE LOGIN === -->
+    <div id="login-screen">
+        <div class="login-box">
+            <div class="avatar">
+                <img src="assets/images/cufflinks_avatar.png" alt="User: Daniel Hawthorne">
+            </div>
+            <h2>Daniel Hawthorne</h2>
+            <p class="status">System Locked • Secure Connection Established</p>
+
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Enter Password">
+                <button onclick="checkPassword()">→</button>
+            </div>
+            <p id="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- === DESKTOP (Fundo Preto) === -->
+    <div id="desktop-screen" class="hidden">
+
+        <!-- ÍCONES DA ÁREA DE TRABALHO -->
+        <div class="icon-grid">
+
+            <!-- 1. Whitaker Holdings (Bloqueado) -->
+            <div class="desktop-icon locked" onclick="triggerBiometricError('Whitaker Holdings')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Whitaker Holdings</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- 2. Whitaker Trust Fund (Bloqueado - RESTAURADO) -->
+            <div class="desktop-icon locked" onclick="triggerBiometricError('Whitaker Trust Fund')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Whitaker Trust Fund</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- 3. Hawthorne Holdings (Bloqueado) -->
+            <div class="desktop-icon locked" onclick="triggerBiometricError('Hawthorne Holdings')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Hawthorne Holdings</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- 4. Personal Assets (Bloqueado - RESTAURADO) -->
+            <div class="desktop-icon locked" onclick="triggerBiometricError('Personal Assets')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Personal Assets</span>
+                <span class="lock-icon">🔒</span>
+            </div>
+
+            <!-- 5. Parliamentary Affairs (Aberto/Vazio - RESTAURADO) -->
+            <div class="desktop-icon" onclick="openWindow('win-parliament')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Parliamentary Affairs</span>
+            </div>
+
+            <!-- 6. Active Projects (PDFs) -->
+            <div class="desktop-icon target-folder" onclick="openWindow('win-projects')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Active Projects</span>
+            </div>
+
+            <!-- 7. Contingency (Áudios) -->
+            <div class="desktop-icon target-folder" onclick="openWindow('win-contingency')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Contingency</span>
+            </div>
+
+            <!-- 8. Saved HTML -->
+            <div class="desktop-icon target-folder" onclick="openWindow('win-saved-html')">
+                <img src="assets/images/icons/folder_icon.png" alt="Folder">
+                <span>Saved HTML</span>
+            </div>
+
+        </div>
+
+        <!-- Link para a Nuvem Compartilhada -->
+        <div class="desktop-icon icon-right" onclick="window.open('shared_cloud.html')">
+            <img src="assets/images/icons/cloud_icon.png" alt="Cloud">
+            <span>Secure Link Shared_Cloud with CS</span>
+        </div>
+
+
+
+
+
+        <!-- === JANELAS === -->
+
+        <!-- Janela de ERRO BIOMÉTRICO -->
+        <div id="bio-prompt" class="window hidden bio-window">
+            <div class="window-header error-header"><span>SECURITY ALERT</span></div>
+            <div class="window-content bio-content">
+                <div id="bio-icon">🖐️</div>
+                <h3 id="bio-title">BIOMETRIC SCAN REQUIRED</h3>
+                <p id="bio-msg">Access Restricted.</p>
+                <div class="progress-bar-container">
+                    <div id="bio-progress" class="progress-fill"></div>
+                </div>
+                <p id="bio-status">Scanning...</p>
+                <button onclick="closeWindow('bio-prompt')" class="cancel-btn">CANCEL</button>
+            </div>
+        </div>
+
+        <!-- Janela: Parliamentary Affairs (Atualizada) -->
+        <div id="win-parliament" class="window hidden">
+            <div class="window-header">
+                <!-- Caminho atualizado para manter a imersão -->
+                <span>/System/Users/DH/Parliamentary Affairs</span>
+                <div class="window-controls">
+                    <button class="close-btn" onclick="closeWindow('win-parliament')">x</button>
+                </div>
+            </div>
+
+            <!-- Adicionada a classe 'file-grid-layout' para alinhar os ícones corretamente -->
+            <div class="window-content file-grid-layout">
+
+                <!-- Arquivo 1: Perfil Biográfico -->
+                <div class="file-item" onclick="openPDF('AF_BIOGRAPHICAL_PROFILE.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png" alt="PDF">
+                    <span>AF_Biographical_Profile.pdf</span>
+                </div>
+
+                <!-- Arquivo 2: Registro de Votação -->
+                <div class="file-item" onclick="openPDF('PARLIAMENTARY_VOTING_RECORD.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png" alt="PDF">
+                    <span>AF_Voting_Record_Analysis.pdf</span>
+                </div>
+
+                <!-- Arquivo 3: Transcrições de Discursos -->
+                <div class="file-item" onclick="openPDF('SPEECH_TRANSCRIPTS.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png" alt="PDF">
+                    <span>AF_Speech_Transcripts.pdf</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Janela: Contingency (Áudios) -->
+        <div id="win-contingency" class="window hidden">
+            <div class="window-header">
+                <span>/System/Users/DH/Contingency/Audio_Logs</span>
+                <button class="close-btn"
+  onclick="stopAndResetAudios('win-contingency'); closeWindow('win-contingency')">x</button>
+
+            </div>
+            <div class="window-content">
+                <div class="file-item audio-file">
+                    <img src="assets/images/icons/audio_icon.png">
+                    <div>
+                        <span>AF_Customs_Gateway_Intel.mp3</span>
+                        <audio controls>
+                            <source src="assets/audio/AF_Customs_Gateway_Intel_14-03-2025.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+                <div class="file-item audio-file">
+                    <img src="assets/images/icons/audio_icon.png">
+                    <div>
+                        <span>AF_The_Brick_Crisis_Log.mp3</span>
+                        <audio controls>
+                            <source src="assets/audio/AF_The_Brick_Crisis_25-07-2025.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Janela: Active Projects (Expandida) -->
+        <div id="win-projects" class="window hidden">
+            <div class="window-header">
+                <span id="path-display">/System/Users/DH/Active Projects</span>
+                <div class="window-controls">
+                    <button class="close-btn" onclick="closeWindow('win-projects')">✕</button>
+                </div>
+            </div>
+
+            <!-- NÍVEL RAIZ DA PASTA -->
+            <div id="view-root" class="window-content file-grid-layout">
+                <!-- Pasta Finch -->
+                <div class="file-item folder-item" onclick="openSubfolder('view-finch', '/Finch_CCA_Sale')">
+                    <img src="assets/images/icons/folder_icon.png">
+                    <span>Finch_CCA_Sale</span>
+                </div>
+
+                <!-- Pasta Alex Sharma -->
+                <div class="file-item folder-item" onclick="openSubfolder('view-sharma', '/Sharma_SmartPay')">
+                    <img src="assets/images/icons/folder_icon.png">
+                    <span>Sharma_SmartPay</span>
+                </div>
+
+                <!-- Pasta União Europeia (Bruxelas) -->
+                <div class="file-item folder-item" onclick="openSubfolder('view-eu', '/EU_Stablecoin_Summit')">
+                    <img src="assets/images/icons/folder_icon.png">
+                    <span>EU_Stablecoin_Regs</span>
+                </div>
+
+                <!-- Pasta Ludger -->
+                <div class="file-item folder-item" onclick="openSubfolder('view-ludger', '/Ludger_Private')">
+                    <img src="assets/images/icons/folder_icon.png">
+                    <span>Ludger_Assets</span>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO DA SUBPASTA FINCH (O que você já tinha) -->
+            <div id="view-finch" class="window-content hidden">
+                <div class="back-btn" onclick="goBack('view-root')">⬅ Back</div>
+
+                <!--Payment_Structure_Draft_v3-->
+                <div class="file-item" onclick="openPDF('Payment_Structure_Draft_v3.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span>Payment_Structure_Draft_v3.pdf</span>
+                </div>
+                <!-- Prospecto da Villa de Alistair -->
+                <div class="file-item" onclick="openPDF('Alistair_Finch_Villa_Prospectus.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span>Alistair_Finch_Villa_Prospectus.pdf</span>
+                </div>
+
+
+                <!-- PDFs Bloqueados que criamos antes -->
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Solicitor_Correspondence_04.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png"><span class="lock-small">🔒</span>
+                    <span>Solicitor_Correspondence_04.pdf</span>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO DA SUBPASTA SHARMA (VOLUME) -->
+            <div id="view-sharma" class="window-content hidden">
+                <div class="back-btn" onclick="goBack('view-root')">⬅ Back</div>
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('SmartPay_Acquisition_Draft.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png"><span class="lock-small">🔒</span>
+                    <span>SmartPay_Acquisition_Draft.pdf</span>
+                </div>
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Sharma_Personal_Vetting.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png"><span class="lock-small">🔒</span>
+                    <span>Sharma_Personal_Vetting.pdf</span>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO DA SUBPASTA EU (VOLUME) -->
+            <div id="view-eu" class="window-content hidden">
+                <div class="back-btn" onclick="goBack('view-root')">⬅ Back</div>
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('EU_Directive_Stablecoins_BXL.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png"><span class="lock-small">🔒</span>
+                    <span>EU_Directive_Stablecoins_BXL.pdf</span>
+                </div>
+            </div>
+
+            <!-- CONTEÚDO DA SUBPASTA LUDGER (VOLUME) -->
+            <div id="view-ludger" class="window-content hidden">
+                <div class="back-btn" onclick="goBack('view-root')">⬅ Back</div>
+                <div class="file-item locked-file" onclick="triggerLockedPDF('Ludger_Case_Summary.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png"><span class="lock-small">🔒</span>
+                    <span>Ludger_Case_Summary.pdf</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Janela: Active Projects (PDFs) -->
+        <div id="win-projects" class="window hidden">
+            <div class="window-header">
+                <span id="path-display">/System/Users/DH/Active Projects</span>
+                <div class="window-controls"><button class="close-btn" onclick="closeWindow('win-projects')">x</button>
+                </div>
+            </div>
+            <div id="view-root" class="window-content">
+                <div class="file-item folder-item" onclick="openSubfolder('view-finch', '/Finch_CCA_Sale')">
+                    <img src="assets/images/icons/folder_icon.png">
+                    <span>Finch_CCA_Sale</span>
+                </div>
+            </div>
+            <div id="view-finch" class="window-content hidden">
+                <div class="back-btn" onclick="goBack('view-root')">⬅ Back</div>
+
+                <!-- O único arquivo real -->
+                <div class="file-item" onclick="openPDF('Payment_Structure_Draft_v3.pdf')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span>Payment_Structure_Draft_v3.pdf</span>
+                </div>
+
+                <!-- ARQUIVOS DE VOLUME (BLOQUEADOS) -->
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Attorney_Client_Privilege_Ref_992.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span class="lock-small">🔒</span>
+                    <span>Attorney_Client_Privilege_Ref_992.pdf</span>
+                </div>
+
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Whitaker_Alpha_Deed_Registry.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span class="lock-small">🔒</span>
+                    <span>Whitaker_Alpha_Deed_Registry.pdf</span>
+                </div>
+
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Correspondence_Finch_Solicitors.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span class="lock-small">🔒</span>
+                    <span>Correspondence_Finch_Solicitors.pdf</span>
+                </div>
+
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('AML_Compliance_Checklist_UK.pdf', 'Postcode')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span class="lock-small">🔒</span>
+                    <span>AML_Compliance_Checklist_UK.pdf</span>
+                </div>
+
+                <div class="file-item locked-file"
+                    onclick="triggerLockedPDF('Land_Tax_Assessment_Algarve.pdf', 'SMS Code')">
+                    <img src="assets/images/icons/pdf_icon.png">
+                    <span class="lock-small">🔒</span>
+                    <span>Land_Tax_Assessment_Algarve.pdf</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Janela: Saved HTML -->
+
+        <div id="win-saved-html" class="window hidden">
+            <div class="window-header">
+                <span>/SYSTEM/USERS/DH/SAVED HTML</span>
+                <div class="window-controls">
+                    <button class="close-btn" onclick="closeWindow('win-saved-html')">✕</button>
+                </div>
+            </div>
+
+            <!-- Adicione a classe file-grid-layout aqui embaixo -->
+            <div class="window-content file-grid-layout">
+                <div class="window-content">
+
+                    <!-- Arquivo 1: Road Safety -->
+                    <div class="file-item" onclick="window.open('TL_pt_road_safety.html', '_blank')">
+                        <img src="assets/images/icons/html_icon.png">
+                        <span>Road_Safety_News.html</span>
+                    </div>
+
+                    <!-- Arquivo 2: FinchGate 1 -->
+                    <div class="file-item" onclick="window.open('TL_finchgate1.html', '_blank')">
+                        <img src="assets/images/icons/html_icon.png">
+                        <span>TL_FinchGate_Part_I.html</span>
+                    </div>
+
+                    <!-- Arquivo 3: FinchGate 2 -->
+                    <div class="file-item" onclick="window.open('TL_finchgate2.html', '_blank')">
+                        <img src="assets/images/icons/html_icon.png">
+                        <span>TL_FinchGate_Part_II.html</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Janela: Leitor de PDF -->
+        <div id="win-pdf-viewer" class="window hidden pdf-window">
+            <div class="window-header">
+                <span id="pdf-title">Secure Doc Viewer</span>
+                <div class="window-controls">
+                    <!-- Botão de Maximizar adicionado aqui -->
+                    <button class="maximize-btn" onclick="toggleMaximize('win-pdf-viewer')" title="Maximize">▢</button>
+                    <button class="close-btn" onclick="closeWindow('win-pdf-viewer')">✕</button>
+                </div>
+            </div>
+            <div class="window-content no-padding">
+                <iframe id="pdf-frame" src="" width="100%" height="100%" style="border: none;"></iframe>
+            </div>
+        </div>
+
+        <!-- Janela: Parliamentary Affairs (Vazia - RESTAURADA) -->
+        <div id="win-parliament" class="window hidden">
+            <div class="window-header"><span>Parliamentary Affairs</span><button class="close-btn"
+                    onclick="closeWindow('win-parliament')">x</button></div>
+            <div class="window-content">
+                <p style="color: #444; text-align: center; margin-top: 20px;">Folder is empty.</p>
+            </div>
+        </div>
+
+        <!-- VISUALIZADOR DE IMAGENS (Modal) -->
+        <div id="desktop-image-viewer" class="hidden overlay-viewer" onclick="this.classList.add('hidden')">
+            <div class="viewer-content">
+                <img id="viewer-img" src="">
+                <p id="viewer-caption"></p>
+            </div>
+        </div>
+
+    </div> <!-- Fim Desktop -->
+
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,563 @@
+:root {
+    --bg-main: #f5f7fa;
+    /* Cinza gelo muito claro */
+    --bg-white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #95a5a6;
+    --accent: #2c3e50;
+    /* Azul Marinho Profundo (Sofisticado) */
+    --border: #e1e4e8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.brand span {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.menu li.active,
+.menu li:hover {
+    background-color: #f0f4f8;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background: #e0e6ed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info .name {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.user-info .role {
+    font-size: 0.7rem;
+    color: var(--text-light);
+}
+
+/* --- ÁREA PRINCIPAL --- */
+.main-area {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumbs .current {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.arrow {
+    margin: 0 10px;
+    font-size: 0.7rem;
+}
+
+.search-bar {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-light);
+    width: 250px;
+}
+
+/* --- GRID DE ARQUIVOS --- */
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Estilo para link do ZIP */
+/* Garante que o link ocupe o espaço total da célula do grid */
+.file-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    /* Adicione isso */
+    height: 100%;
+    /* Adicione isso */
+}
+
+/* Garante que o card dentro do link se expanda */
+.file-card-link .file-card {
+    flex: 1;
+    /* Faz o card crescer para preencher o link <a> */
+    width: 100%;
+    /* Garante a largura total */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajuste opcional para todos os cards terem a mesma altura */
+.file-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.file-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.file-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-color: #ccdbe8;
+}
+
+.file-preview {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.file-preview .icon {
+    font-size: 2.5rem;
+    color: #cbd5e0;
+}
+
+.audio-type {
+    background-color: #f8f9fa;
+}
+
+.doc-type {
+    background-color: #f8f9fa;
+}
+
+.zip-type {
+    background-color: #f8f9fa;
+}
+
+/* Amarelo suave para ZIP */
+.img-type {
+    padding: 0;
+}
+
+.img-type img {
+    width: 64px;
+    /* Tamanho fixo do ícone */
+    height: 64px;
+    object-fit: contain;
+
+}
+
+/* Ícone de Imagem (usado no ZIP) */
+.icon-img {
+    width: 64px;
+    height: 64px;
+}
+
+.file-info {
+    padding: 15px;
+}
+
+.filename {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meta {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+/* --- MODAL / LIGHTBOX (CORRIGIDO) --- */
+.hidden {
+    display: none !important;
+}
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 62, 80, 0.6);
+    /* Fundo um pouco mais escuro para foco */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-window {
+    background: white;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+/* Maximizar Modal */
+.modal-window.maximized {
+    width: 98vw !important;
+    height: 98vh !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+/* Cabeçalho do Modal */
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcfcfc;
+    z-index: 10;
+    /* Garante que fique acima da imagem */
+    position: relative;
+    flex-shrink: 0;
+    /* Impede que o cabeçalho seja esmagado */
+}
+
+.modal-header span {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Corpo do Modal - Onde a mágica acontece */
+.modal-body {
+    padding: 0;
+    flex: 1;
+    overflow: auto;
+    /* Permite rolar a imagem */
+    display: flex;
+    align-items: flex-start;
+    /* FIX: Alinha imagem ao TOPO, não ao centro */
+    justify-content: center;
+    position: relative;
+    background-color: #1a1a1a;
+    /* Fundo escuro para imagens */
+}
+
+/* Imagem com Zoom */
+#modal-image {
+    max-width: 95%;
+    /* Começa quase cheia, mas com margem */
+    max-height: 85vh;
+    /* Limita altura inicial */
+    margin-top: 20px;
+    /* Espaço para não colar no cabeçalho */
+    margin-bottom: 20px;
+
+    transform-origin: top left;
+    /* FIX: O zoom cresce para baixo */
+
+    transition: transform 0.2s ease;
+    cursor: default;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Botões de Controle */
+.modal-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.tool-btn {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    display: none;
+    /* Controlado via JS */
+}
+
+.tool-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+* Estilo para arquivos PDF com cadeado */ .locked-file {
+    position: relative;
+    opacity: 0.7;
+    /* Dá um aspecto de arquivo protegido */
+}
+
+.lock-small {
+    position: absolute;
+    left: 28px;
+    top: 5px;
+    font-size: 12px;
+    background: #111;
+    border-radius: 50%;
+    padding: 2px;
+    z-index: 5;
+}
+
+.locked-file:hover {
+    opacity: 1;
+    border-color: #080707 !important;
+    /* Destaque em vermelho ao passar o mouse */
+}
+
+/* === AJUSTES PARA CELULAR E TABLET (Responsividade) === */
+/* === CORREÇÃO MOBILE DEFINITIVA (REVISADA) === */
+@media (max-width: 768px) {
+
+    /* --- LAYOUT DA NUVEM --- */
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 15px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 8px;
+        padding: 5px 0;
+    }
+
+    .menu li {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        background: #f0f4f8;
+        border-radius: 20px;
+        margin-bottom: 0;
+    }
+
+    .user-profile { display: none; }
+    .main-area { padding: 15px; flex: none; }
+    .file-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    /* --- MODAL DA IMAGEM (CONSERTO DO X E TRAVAMENTO) --- */
+
+    /* Força o fechamento quando a classe hidden for aplicada */
+    #modal-overlay.hidden {
+        display: none !important;
+    }
+
+    #modal-overlay:not(.hidden) {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .modal-window, 
+    .modal-window.maximized {
+        position: relative !important;
+        top: 30px !important; /* Espaço para fugir da barra do navegador */
+        width: 100% !important;
+        height: calc(100% - 30px) !important;
+        border-radius: 20px 20px 0 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: #000 !important;
+    }
+
+    .modal-header {
+        height: 60px !important;
+        min-height: 60px !important;
+        background-color: #ffffff !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 0 15px !important;
+        border-radius: 20px 20px 0 0;
+        flex-shrink: 0;
+    }
+
+    /* Título limitado para não bater no X */
+    #modal-title {
+        font-size: 0.85rem !important;
+        color: #000 !important;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+        display: block !important;
+    }
+
+    /* Container do botão X */
+    .modal-controls {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        width: 30% !important;
+    }
+
+    /* Esconde os botões de zoom que você não quer no celular */
+    #btn-zoom-in, #btn-zoom-out, #btn-maximize, .tool-btn {
+        display: none !important;
+    }
+
+    /* BOTÃO FECHAR (X) - Ocupando o canto superior direito */
+    .close-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 2.2rem !important;
+        color: #000 !important;
+        background: transparent !important;
+        width: 44px !important;
+        height: 44px !important;
+        cursor: pointer !important;
+        border: none !important;
+    }
+
+    .modal-body {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        overflow: hidden;
+    }
+
+    #modal-image {
+        max-width: 100% !important;
+        max-height: 90% !important;
+        object-fit: contain !important;
+        transform: none !important;
+    }
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onion Chat - Node 7412</title>
+    <style>
+        /* Importando fonte hacker do Google */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #d0d0d0;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Efeito de scanlines de monitor CRT */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        #terminal {
+            width: 90%;
+            max-width: 900px;
+            background-color: #000;
+            border: 1px solid #1a1a1a;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+            position: relative;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .status-red {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .status-green {about:blank#blocked
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .warning {
+            color: #ff0000;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            border: 1px dashed #ff0000;
+            padding: 5px;
+            display: inline-block;
+        }
+
+        .separator {
+            border-bottom: 1px dotted #22ff22;
+            margin: 20px 0;
+            opacity: 0.5;
+        }
+
+        .chat-entry {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #111;
+            padding-bottom: 15px;
+        }
+
+        .user-line {
+            margin-bottom: 5px;
+        }
+
+        .username {
+            color: #ffff00;
+            font-weight: bold;
+            text-shadow: 0 0 3px rgba(255, 255, 0, 0.5);
+        }
+
+        .timestamp {
+            color: #555;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .message {
+            color: #aaa;
+            line-height: 1.5;
+            word-spacing: -1px;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Footer / System Messages */
+        .system-msg {
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Scrollbar estilizada */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="terminal">
+        <div class="header">
+            <div class="status-red">[ENCRYPTED CONNECTION ESTABLISHED]</div>
+            <div class="status-green">[ONION ROUTING: ACTIVE]</div>
+            <div class="status-green">[RELAY NODES: GER -> PT -> NL]</div>
+            <div class="warning">WARNING: This node is unmoderated. Proceed at your own risk.</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <!-- Chat Logs -->
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">NarcoBroker</span>
+                <span class="timestamp">[14:02:11]</span>
+            </div>
+            <div class="message">
+                Anyone dealing with heavy volume in Southern Europe? My usual channels in Rotterdam are choked.
+                I need to move 7 figures fast. No banks.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">CryptoCleaner</span>
+                <span class="timestamp">[14:05:33]</span>
+            </div>
+            <div class="message">
+                Forget the traditional routes. Physical movement is dead. You need to convert to assets.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">VostokBillions</span>
+                <span class="timestamp">[14:08:45]</span>
+            </div>
+            <div class="message">
+                Listen to the man. I moved 50M last month through The Golden Circle.
+                Clean as a whistle.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">NarcoBroker</span>
+                <span class="timestamp">[14:09:12]</span>
+            </div>
+            <div class="message">
+                Golden Circle? Is that the betting platform? I heard it's rigged.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">VostokBillions</span>
+                <span class="timestamp">[14:11:00]</span>
+            </div>
+            <div class="message">
+                That's the point, idiot. It's a "sure bet". You lose the crypto, you win the villa, the yacht,
+                or the car in the real world. The paper trail is perfect. Gambling winnings are tax-friendly in PT.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">SilkRoadGhost</span>
+                <span class="timestamp">[14:15:22]</span>
+            </div>
+            <div class="message">
+                Can someone drop an invite link? The old .onion is down.
+            </div>
+        </div>
+
+        <div class="chat-entry">
+            <div class="user-line">
+                <span class="username">CryptoCleaner</span>
+                <span class="timestamp">[14:18:05]</span>
+            </div>
+            <div class="message">
+                There are no links. You don't find them. <br>
+                The admin... Wolf of the South... he vets everyone personally.
+                If you don't have a sponsor, you don't get in.
+            </div>
+        </div>
+
+        <!-- System Alerts -->
+        <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px;">
+            <div class="user-line">
+                <span class="username" style="color: #ff0000;">SYSTEM_ADMIN</span>
+                <span class="timestamp">[14:20:00]</span>
+            </div>
+            <div class="system-msg">*** USER 'NarcoBroker' DISCONNECTED BY SERVER ***</div>
+            <div class="system-msg">*** TRACE INITIATED ***</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

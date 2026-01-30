@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun, Sea and Sirens: The Hidden Dangers of Algarve's Roads | The Ledger</title>
+
+    <style>
+        :root {
+            --primary-color: #111;
+            --accent-color: #b71c1c;
+            /* Vermelho sangue */
+            --bg-color: #fdfdfd;
+            --text-font: 'Georgia', serif;
+            --head-font: 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        /* HEADER PADRONIZADO */
+        header {
+            background: white;
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+        }
+
+        nav {
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c0392b;
+        }
+
+        /* --- CONTEÚDO DO ARTIGO --- */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            /* background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            padding-bottom: 60px;*/
+        }
+
+        .category-tag {
+            display: inline-block;
+            margin-top: 40px;
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* AJUSTADO: Título agora segue o peso do FinchGate */
+        h1 {
+            font-family: var(--head-font);
+            font-size: 3rem;
+            font-weight: 800;
+            /* Negrito forte de manchete */
+            line-height: 1.1;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-family: var(--text-font);
+            font-size: 1.3rem;
+            color: #555;
+            font-weight: normal;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .meta-data {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            font-family: var(--head-font);
+            font-size: 0.85rem;
+        }
+
+        .author {
+            font-weight: 700;
+            color: #000;
+            margin-right: 20px;
+        }
+
+
+
+        .article-body p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5em;
+            color: #2c2c2c;
+        }
+
+        /* Capitular (Drop Cap) */
+        .article-body p:first-of-type::first-letter {
+            float: left;
+            font-size: 5.5rem;
+            line-height: 4.5rem;
+            padding-top: 4px;
+            padding-right: 12px;
+            padding-left: 3px;
+            font-weight: bold;
+            font-family: var(--font-headline);
+        }
+
+        .highlight-box {
+            background-color: #f4f4f4;
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 30px 0;
+            font-family: var(--font-ui);
+            font-style: italic;
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-headline);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="brand">The Ledger</a>
+        <nav>
+            <a href="#">World</a>
+            <a href="#">Politics</a>
+            <a href="#">Business</a>
+            <a href="#" style="color:var(--accent-color)">Travel & Lifestyle</a>
+            <a href="#">Investigations</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <h1>Sun, Sea, and Sirens: The Hidden Dangers of Algarve's Roads</h1>
+
+        <div class="subtitle">
+            Beyond the golden beaches and luxury resorts, a pattern of neglect, confusing infrastructure, and tourist
+            vulnerability is turning dream holidays into tragedies.
+        </div>
+
+        <div class="meta-data">
+            <span class="author">By Cassandra Snow</span>
+
+        </div>
+
+        <div class="image-placeholder">
+            <img src="assets/images/the_ledger/sinistros.png" alt="Road in Algarve">
+        </div>
+        <span class="caption">Mapping the Danger: Official statistics highlight critical blackspots along the A2 highway
+            and the notorious EN125 coastal road.</span>
+
+        <div class="article-body">
+            <p>
+                <span style="font-weight:bold;">The Algarve —</span> is sold to the world as a sanctuary of eternal
+                sunshine. Brochures promise golden cliffs,
+                turquoise waters, and a slower pace of life. However, for an increasing number of visitors, the dream
+                ends abruptly on the tarmac of the region's complex road network. While official tourism campaigns
+                highlight the hospitality, anecdotal evidence from local emergency rooms tells a different story: the
+                roads of southern Portugal can be a trap for the unwary.
+            </p>
+
+            <p>During a recent visit to the region, investigating reports of infrastructure issues, I uncovered a
+                concerning pattern. It is not simply a matter of bad driving, but a "perfect storm" of unfamiliar
+                conditions, confusing signage, and relaxed local enforcement that creates a high-risk environment for
+                those used to the rigorous order of British or German motorways.</p>
+
+            <h2>Infrastructure Under Stress</h2>
+
+            <p>The testimonials are banal in their individuality, but together they paint a picture of systemic neglect.
+                At the Arade Hospital in Portimão, I spoke with Mrs. Amelia, a spirited local resident recovering from a
+                collision. Her insight was sharp and unforgiving.</p>
+
+            <div class="highlight-box">
+                "The road is a disgrace, my dear. One moment you are driving fine, the next you are dodging craters like
+                you are in a war zone. One day, a greater tragedy will happen." — Mrs. Amelia.
+            </div>
+
+            <p>Mrs. Amelia's frustration echoes that of many. Poor maintenance on secondary roads often forces drivers
+                into sudden, defensive maneuvers, swerving into oncoming traffic to avoid damage to their vehicles.</p>
+
+            <h2>The Tourist Trap</h2>
+
+            <p>The dangers are not limited to potholes. Mr. Müller, a German tourist visiting for the first time, found
+                his holiday cut short by an unpredictable rural hazard. He crashed his rental car trying to avoid a
+                stray dog that appeared out of nowhere on a poorly lit backroad. "It happened so fast," he recounted.
+                "One second the road was clear, the next... chaos."</p>
+
+            <p>Even more concerning is the confusion caused by roundabouts and highway entries, which differ subtly but
+                significantly from UK standards. A British couple, the Smiths, recounted with palpable embarrassment how
+                they found themselves driving on the wrong side of a motorway access ramp. "We nearly caused a tragedy,"
+                Mrs. Smith admitted, shaken. "We felt so foolish, but the signage was completely ambiguous."</p>
+
+            <h2>Hidden Hazards</h2>
+
+            <p>Even experienced drivers are not immune to the region's specific conditions. Rui, a young motorcyclist
+                recovering from a leg injury, blamed the accumulation of sand on a sharp curve of a secondary road—a
+                common occurrence in coastal areas that is rarely signposted.</p>
+
+            <p>"I lost grip instantly," he explained. "It was a terrifying fright, but I was lucky."</p>
+
+            <p>While the Algarve remains a premier destination, it demands a level of vigilance that many leave at the
+                airport. The mix of high-speed locals, disoriented tourists in rental cars, and inconsistent road
+                conditions creates a volatile cocktail. For those planning to drive south this summer, the advice is
+                clear: assume the roads are less forgiving than the beaches. The sun may be gentle, but the asphalt
+                offers no quarter.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; The Ledger. Truth in Journalism.</p>
+    </footer>
+
+</body>
+
+</html>

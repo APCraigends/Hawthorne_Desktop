@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 0.1% Lounge | Secure Archive: The Algarve Sessions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --gold: #b38b4d;
+            --gold-glow: #f5d191;
+            --text-muted: #666;
+            --card-bg: #0d0d0d;
+            --border: #1a1a1a;
+            --ruby: #d32f2f;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #bbb;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #000;
+            padding: 0;
+            /* Tiramos o padding para as abas colarem no fundo */
+            border-bottom: 2px solid var(--gold);
+            text-align: center;
+        }
+
+        .header-top {
+            padding: 40px 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .user-info-surface {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .status-indicator {
+            color: #4caf50;
+            margin-right: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Sistema de Abas estilo Trip Advisor Luxury */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .tab-link {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-link:hover {
+            color: var(--gold-glow);
+            background: #111;
+        }
+
+        .tab-link.active {
+            color: var(--gold);
+            border-bottom: 3px solid var(--gold);
+            background: #0f0f0f;
+        }
+
+        .security-badge {
+            border: 1px solid #222;
+            padding: 10px 20px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #4caf50;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 30px;
+        }
+
+        .thread-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .post {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+            display: flex;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        /* Ajuste da barra lateral do usuário */
+        .user-sidebar {
+            width: 180px;
+            padding: 30px 15px;
+            border-right: 1px solid var(--border);
+            text-align: center;
+            background: #090909;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-glow);
+            background: #000;
+        }
+
+        .username {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .user-rank {
+            font-size: 0.55rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Ajuste do corpo do post */
+        .post-body {
+            padding: 30px 40px;
+            flex: 1;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .post-meta {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #151515;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--gold-glow);
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(245, 209, 145, 0.3);
+        }
+
+        .ruby-accent {
+            color: var(--ruby);
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: #333;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        /* Efeito de hover nos posts */
+        .post:hover {
+            border-color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Responsividade básica */
+        @media (max-width: 768px) {
+            .post {
+                flex-direction: column;
+            }
+
+            .user-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="logo">The 0.1% Lounge</div>
+            <div class="user-info-surface">
+                <span class="status-indicator">●</span> Global Access: Active
+            </div>
+        </div>
+
+        <nav class="nav-tabs">
+            <a href="#" class="tab-link active">Venues</a>
+            <a href="#" class="tab-link">Private Sanctuaries</a>
+            <a href="#" class="tab-link">Haute Gastronomy</a>
+            <a href="#" class="tab-link">Asset Logistics</a>
+            <a href="#" class="tab-link">Peer Insights</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+
+        <!-- Post 1: SilkSuit (Newbie) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">SS</div>
+                <div class="username">SilkSuit</div>
+                <div class="user-rank">Guest Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 17, 2024 - 04:12 AM</div>
+                <p>I just touched down in Portugal. I'm searching for some real thrill, not the tourist traps. Any
+                    thoughts on where the elite actually play?</p>
+            </div>
+        </div>
+
+        <!-- Post 2: RoyalStraightFlush (Gatekeeper) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">RS</div>
+                <div class="username">RoyalStraightFlush</div>
+                <div class="user-rank">Gold Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 17, 2024 - 07:12 AM</div>
+                <p>What do you mean by "thrill"? If you mean a place for real adrenaline and stakes that would make a
+                    central banker sweat, I know just the place.</p>
+                <p>But let's be blunt: How large is your liquid net worth? </p>
+            </div>
+        </div>
+
+        <!-- Post 3: SilkSuit -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">SS</div>
+                <div class="username">SilkSuit</div>
+                <div class="user-rank">Guest Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 17, 2024 - 08:42 PM</div>
+                <p>Let's just say I have a permanent suite in Monaco and a direct line to the board of three major
+                    banks.</p>
+            </div>
+        </div>
+
+        <!-- Post 3.1: RoyalStraightFlush (Gatekeeper) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">RS</div>
+                <div class="username">RoyalStraightFlush</div>
+                <div class="user-rank">Gold Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 01:24 AM</div>
+                <p>How cute you are still playing with the children! </p>
+                <p>If you're ready to men's up the Wolf's Club is the place you are looking for.</p>
+            </div>
+        </div>
+
+        <!-- Post 3: SilkSuit -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">SS</div>
+                <div class="username">SilkSuit</div>
+                <div class="user-rank">Guest Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 04:04 PM</div>
+                <p>Interesting presentation. Tell me more about this so called Wolf's Club.</p>
+            </div>
+        </div>
+
+        <!-- Post 4: DiamondKing (The Veteran) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">DK</div>
+                <div class="username">DiamondKing</div>
+                <div class="user-rank">VVIP Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 05:44 AM</div>
+                <p>I attended the Wolf’s Circuit session two nights ago. "Brutal" is an understatement. ASM was in rare
+                    form. We had a shipping magnate try to play with a "blank check" ego. ASM shut him down in seconds.
+                </p>
+                <p>The rule is simple: You present physical collateral or you don't sit. By 3 AM, the table was covered
+                    in land deeds, yacht titles, and exotic car fobs. It’s the only place left in Europe where the air
+                    actually smells like unfiltered power.</p>
+            </div>
+        </div>
+
+        <!-- Post 5: GoldenClock (The Adrenaline Junkie) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">GC</div>
+                <div class="username">GoldenClock</div>
+                <div class="user-rank">Elite Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 10:15 AM</div>
+                <p>The shipping guy was nothing compared to that investment banker. The man went on a tilt I’ve never
+                    seen. He lost two villas in Marbella and his limited Patek within an hour. He was desperate to stay
+                    in.</p>
+                <p>Then he did it. He offered a "one-week hospitality agreement" involving his supermodel wife.
+                    You could hear the room stop breathing. ASM didn't even flinch. He looked at the banker
+                    with those dead eyes and said: "She’s worth a 200k credit. One hand. High card wins."</p>
+                <p>The banker hit a Straight Flush on the river. He won. The roar that man let out... it wasn't about
+                    the money. It was the sick high of knowing he almost lost everything.
+                </p>
+            </div>
+        </div>
+
+        <!-- Post 6: RubyFlame (The Sharp One) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">RF</div>
+                <div class="username">RubyFlame</div>
+                <div class="user-rank">Platinum Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 01:30 PM</div>
+                <p>Spare me the "masculine roar" nonsense, <span class="highlight">GoldenClock</span>. We all know you
+                    only enjoy the show because you're too much of a coward to put your own skin on the line. I saw you
+                    sweating just watching them.</p>
+                <p>That banker is a dog. Staking his wife? If he had any iron in his soul, he would have staked his own
+                    freedom or his dominant hand. Staking someone else is just a pedestrian way to get an erection. And
+                    you, GoldenClock—don't think I didn't see you fold that Full House when the betting got serious. You
+                    crave the smell of ruin, but you're too afraid of the Wolf's bite.</p>
+            </div>
+        </div>
+
+        <!-- Post 7: GoldenClock (The Rebuttal) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">GC</div>
+                <div class="username">GoldenClock</div>
+                <div class="user-rank">Elite Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 18, 2024 - 03:20 PM</div>
+                <p>Always so aggressive, <span class="highlight">Ruby</span>. Is that why your husband stays in London
+                    while you chase the Wolf across the continent? We both know you're as addicted to this chaos as I
+                    am.</p>
+                <p>The banker won the pot, sure. But ASM won the man. He has the video recording of the bet. That’s the
+                    real beauty of
+                    the game. The house always wins, even when you win the hand.</p>
+            </div>
+        </div>
+
+        <!-- Post 8: SilkSuit (Clue for Cassandra) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">SS</div>
+                <div class="username">SilkSuit</div>
+                <div class="user-rank">Guest Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 19, 2024 - 07:02 AM</div>
+                <p>Disturbing... and perfect. It is definelly what I'm looking for! How do I find such a rare place?</p>
+            </div>
+        </div>
+
+        <!-- Post 9: DiamondKing (The Ghost Protocol) -->
+        <div class="post">
+            <div class="user-sidebar">
+                <div class="avatar">DK</div>
+                <div class="username">DiamondKing</div>
+                <div class="user-rank">VVIP Member</div>
+            </div>
+            <div class="post-body">
+                <div class="post-meta">July 19, 2024 - 10:00 AM</div>
+                <p>You don't. The casino's location is always changing. Wait for the encrypted invitation to your
+                    registered account. And don't worry about the local police. ASM uses what it calls the "Ghost
+                    Protocol." You'll understand if you're lucky enough to be invited.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        PROPERTY OF THE ALPHA-WOLF COLLECTIVE <br>
+        ALL LOGS ARE MONITORED | DISCRETION IS MANDATORY
+    </div>
+
+</body>
+
+</html>
