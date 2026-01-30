@@ -544,64 +544,73 @@ audio {
     border-color: #ff4444 !important;
     /* Destaque em vermelho ao passar o mouse */
 }
-/* === AJUSTES EXCLUSIVOS PARA MOBILE (CELULARES) === */
+/* ============================================================
+   5. AJUSTES MOBILE (AQUI ESTÁ A SOLUÇÃO DO FIREFOX)
+   ============================================================ */
 @media (max-width: 768px) {
 
-    /* Ajusta o fundo para usar a altura dinâmica (evita cortes de barras) */
     #desktop-screen {
-        height: 100dvh !important; 
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centraliza horizontalmente */
+        height: 100dvh !important; /* d para dinâmico (Firefox bar) */
+        width: 100vw;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* CENTRALIZA TUDO */
         justify-content: flex-start;
-        overflow-y: auto;
-        padding-bottom: 80px; /* Espaço extra para não bater na barra de baixo */
+        padding-top: 20px;
     }
 
-    /* Centraliza a grade de ícones */
     .icon-grid {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 15px !important;
-        padding: 20px !important;
-        width: 100%;
-        max-width: 400px; /* Limita a largura para os ícones não espalharem demais */
-        justify-items: center; /* Centraliza os ícones na grade */
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        padding: 15px !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 360px !important; /* Mantém as pastas juntas no meio */
         margin: 0 auto !important;
     }
 
-    /* Ajuste da Janela Interna (Folder View) */
-    .window {
-        width: 92vw !important;
-        left: 4vw !important;
-        top: 5dvh !important; /* Começa um pouco abaixo do topo */
-        height: 70dvh !important; /* Reduzi de 80 para 70 para fugir da barra inferior */
-        max-height: 70dvh !important;
+    .desktop-icon {
+        width: 100% !important;
+        margin-bottom: 10px;
     }
 
-    /* Melhora a visualização dos arquivos dentro da janela */
-    .file-grid-layout {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas no celular fica mais limpo */
-        gap: 10px !important;
-        padding: 10px !important;
-    }
-
-    /* Alerta Biométrico centralizado no meio da tela útil */
-    .bio-window {
-        width: 85% !important;
-        position: fixed !important;
-        top: 40% !important; /* Sobe um pouco para não bater na barra de baixo */
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-    
-    /* Garante que o ícone da nuvem (Cloud) não suma */
+    /* Ícone da Nuvem (Cloud) */
     .icon-right {
         position: relative !important;
         top: 20px !important;
         right: 0 !important;
-        margin: 0 auto 40px auto !important;
+        margin: 20px auto 40px auto !important;
+    }
+
+    /* JANELAS INTERNAS NO MOBILE */
+    .window {
+        width: 94vw !important;
+        height: 75dvh !important; /* Menor para não ficar sob o search bar */
+        left: 3vw !important;
+        top: 10dvh !important; /* Empurra para baixo para fugir do topo */
+        position: fixed !important;
+    }
+
+    /* Grade de arquivos dentro da pasta */
+    .file-grid-layout {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        padding: 10px !important;
+    }
+
+    .file-grid-layout .file-item {
+        width: 100% !important;
+        height: 85px !important;
+        padding: 5px !important;
+    }
+
+    /* Alerta Biométrico */
+    .bio-window {
+        width: 85% !important;
+        top: 45% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
 }
-
