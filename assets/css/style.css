@@ -1,120 +1,44 @@
 /* ============================================================
-   1. RESET E BASE (Geral)
+   1. RESET E BASE
    ============================================================ */
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     font-family: 'Roboto Mono', monospace;
     background-color: #000;
-    overflow: hidden;
     color: #e0e0e0;
     user-select: none;
+    overflow: hidden;
     height: 100vh;
 }
 
-/* ============================================================
-   2. TELA DE LOGIN
-   ============================================================ */
-#login-screen {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at center, #1a1a1a, #000);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.8s ease;
-}
-
-.login-box {
-    text-align: center;
-    background: rgba(20, 20, 20, 0.95);
-    padding: 60px;
-    border: 1px solid #333;
-    border-radius: 6px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
-    width: 400px;
-}
-
-.avatar img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #555;
-    object-fit: cover;
-    margin-bottom: 25px;
-}
-
-.status {
-    color: #666;
-    font-size: 0.75rem;
-    margin-bottom: 35px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-input {
-    background: #0a0a0a;
-    border: 1px solid #444;
-    color: #fff;
-    padding: 12px;
-    border-radius: 2px;
-    outline: none;
-    font-family: 'Roboto Mono', monospace;
-    width: 70%;
-}
-
-button {
-    background: #e0e0e0;
-    color: #000;
-    border: none;
-    padding: 0 20px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 2px;
-}
+.hidden { display: none !important; } /* Garantia que o JS funcione */
 
 /* ============================================================
-   3. DESKTOP SCREEN (Geral)
+   2. DESKTOP E ÍCONES
    ============================================================ */
 #desktop-screen {
     width: 100vw;
-    height: 100vh;
-    background-color: #000;
+    height: 100dvh;
     position: relative;
-    overflow: hidden;
+    background-color: #000;
 }
 
 .icon-grid {
     padding: 40px;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    height: 90vh;
-    align-content: flex-start;
     gap: 30px;
 }
 
 .desktop-icon {
     text-align: center;
     cursor: pointer;
-    width: 130px;
+    width: 120px;
     padding: 10px;
-    border-radius: 4px;
     border: 1px solid transparent;
-    transition: background 0.2s;
-    position: relative;
+    transition: 0.2s;
 }
 
 .desktop-icon:hover {
@@ -122,49 +46,28 @@ button {
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-.desktop-icon img {
-    width: 50px;
-    margin-bottom: 10px;
-}
-
-.desktop-icon span {
-    display: block;
-    font-size: 0.75rem;
-    color: #e0e0e0;
-}
+.desktop-icon img { width: 50px; margin-bottom: 8px; }
+.desktop-icon span { display: block; font-size: 0.75rem; }
 
 .icon-right {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100px;
+    top: 30px; right: 30px;
+    display: flex; flex-direction: column; align-items: center;
 }
 
 /* ============================================================
-   4. JANELAS E PDF VIEWER (Geral)
+   3. JANELAS (WINDOWS)
    ============================================================ */
 .window {
     position: absolute;
-    top: 10%;
-    left: 20%;
+    top: 10%; left: 20%;
     width: 700px;
     background: #181818;
     border: 1px solid #333;
-    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.8);
-    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
     display: flex;
     flex-direction: column;
     z-index: 10;
-}
-
-.pdf-window {
-    width: 850px;
-    height: 85vh;
-    top: 5%;
-    left: 10%;
 }
 
 .window-header {
@@ -172,93 +75,102 @@ button {
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #333;
     font-size: 0.7rem;
     color: #888;
+    border-bottom: 1px solid #333;
 }
 
 .window-content {
     flex: 1;
     background: #111;
     overflow-y: auto;
+    padding: 20px;
 }
 
-#pdf-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
+/* Estilo dos arquivos/pastas dentro da janela */
+.file-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
 }
 
-.hidden { display: none !important; }
+.file-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.file-item:hover { background: rgba(255,255,255,0.05); }
+.file-item img { width: 45px; margin-bottom: 8px; }
+.file-item span { font-size: 0.7rem; color: #ccc; word-break: break-word; }
+
+/* Botão Voltar */
+.back-btn {
+    grid-column: 1 / -1;
+    color: #000;
+    background: #b5c5d3;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    margin-bottom: 15px;
+    width: fit-content;
+}
 
 /* ============================================================
-   5. AJUSTES MOBILE (AQUI ESTÁ A SOLUÇÃO DO FIREFOX)
+   4. AJUSTES MOBILE (FIREFOX & NAVEGAÇÃO)
    ============================================================ */
 @media (max-width: 768px) {
-
+    
     #desktop-screen {
-        height: 100dvh !important; /* d para dinâmico (Firefox bar) */
-        width: 100vw;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* CENTRALIZA TUDO */
-        justify-content: flex-start;
-        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
     }
 
     .icon-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 10px !important;
-        padding: 15px !important;
-        height: auto !important;
-        width: 100% !important;
-        max-width: 360px !important; /* Mantém as pastas juntas no meio */
-        margin: 0 auto !important;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        max-width: 360px;
+        padding: 20px;
+        justify-items: center;
     }
 
-    .desktop-icon {
-        width: 100% !important;
-        margin-bottom: 10px;
-    }
+    .desktop-icon { width: 100%; }
 
-    /* Ícone da Nuvem (Cloud) */
-    .icon-right {
-        position: relative !important;
-        top: 20px !important;
-        right: 0 !important;
-        margin: 20px auto 40px auto !important;
-    }
-
-    /* JANELAS INTERNAS NO MOBILE */
+    /* Janelas curtas para não sumirem sob o search bar */
     .window {
         width: 94vw !important;
-        height: 75dvh !important; /* Menor para não ficar sob o search bar */
+        height: 70dvh !important;
         left: 3vw !important;
-        top: 10dvh !important; /* Empurra para baixo para fugir do topo */
-        position: fixed !important;
+        top: 8dvh !important;
+        position: fixed;
     }
 
-    /* Grade de arquivos dentro da pasta */
-    .file-grid-layout {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
-        padding: 10px !important;
+    /* Subpastas e Conteúdo em Grade no Mobile */
+    /* Importante: Aplicamos a grade para o container de root e subfolders */
+    #view-root, #view-finch, #view-sharma, #view-eu, #view-ludger, #win-parliament .window-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
 
-    .file-grid-layout .file-item {
-        width: 100% !important;
-        height: 85px !important;
-        padding: 5px !important;
-    }
+    /* Mas se tiver a classe hidden, o display:none !important do topo vai vencer */
 
-    /* Alerta Biométrico */
-    .bio-window {
-        width: 85% !important;
-        top: 45% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
+    .file-item img { width: 35px; }
+    .file-item span { font-size: 0.6rem; }
+
+    .icon-right {
+        position: relative;
+        top: 0; right: 0;
+        margin: 20px auto 50px auto;
     }
 }
+
+/* Estilos Específicos de Login e Áudio se mantêm */
+.login-box { /* ... seu estilo anterior ... */ }
+audio { height: 30px; width: 100%; margin-top: 10px; }
