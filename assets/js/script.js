@@ -89,21 +89,19 @@ function goBack(rootId) {
 
 function openPDF(fileName) {
     const isMobile = window.innerWidth <= 768;
-    const pdfPath = window.location.origin + window.location.pathname.replace('index.html', '') + 'assets/docs/' + fileName;
-    
-    // Esse link do Google força a visualização do PDF sem baixar, funciona no Firefox e Chrome
-    const googleViewer = `https://docs.google.com/viewer?url=${encodeURIComponent(pdfPath)}&embedded=true`;
+    // URL completa do seu arquivo no GitHub
+    const rawUrl = 'https://apcraigends.github.io/Hawthorne_Desktop/assets/docs/' + fileName;
 
     if (isMobile) {
-        // No celular, se o Firefox falhar, abrimos em aba nova com o visualizador do Google
-        window.open(googleViewer, '_blank');
+        window.open(rawUrl, '_blank');
     } else {
-        // No Notebook (Notebook), usamos a janela interna mas com o visualizador do Google para evitar tela preta
         const viewer = document.getElementById('win-pdf-viewer');
-        const frame = document.getElementById('pdf-frame');
+        const iframe = document.getElementById('pdf-frame');
         
-        frame.src = googleViewer;
-        document.getElementById('pdf-title').textContent = "SECURE_VIEWER // " + fileName;
+        // Usando o gview para renderizar o PDF de forma embutida
+        iframe.src = 'https://docs.google.com/gview?url=' + encodeURIComponent(rawUrl) + '&embedded=true';
+
+        document.getElementById('pdf-title').textContent = "SecureViewer - " + fileName;
         viewer.classList.remove('hidden');
     }
 }
