@@ -420,7 +420,7 @@ header {
 
 /* === AJUSTES PARA CELULAR E TABLET (Responsividade) === */
 /* === CORREÇÃO MOBILE DEFINITIVA (REVISADA) === */
-@media (max-width: 768px) {
+@media (max-width: 768px) or (max-height: 550px)
 
     /* --- LAYOUT DA NUVEM --- */
     body {
