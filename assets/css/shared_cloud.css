@@ -10,7 +10,7 @@
 }
 
 * {
-    box-sizing: border-box;f
+    box-sizing: border-box;
 }
 
 body {
@@ -32,9 +32,8 @@ body {
     flex-direction: column;
     padding: 30px;
     justify-content: space-between;
-    /* AJUSTE PARA LANDSCAPE: */
     height: 100vh;
-    overflow-y: auto; /* Se a tela for baixa, a barra lateral ganha scroll próprio */
+    overflow-y: auto; /* ALTERAÇÃO: Garante rolagem se o conteúdo for maior que a altura da tela (útil para notebooks pequenos ou tablets) */
 }
 
 .brand {
@@ -176,22 +175,17 @@ header {
 }
 
 /* Estilo para link do ZIP */
-/* Garante que o link ocupe o espaço total da célula do grid */
 .file-card-link {
     text-decoration: none;
     color: inherit;
     display: flex;
-    /* Adicione isso */
     height: 100%;
-    /* Adicione isso */
 }
 
 /* Garante que o card dentro do link se expanda */
 .file-card-link .file-card {
     flex: 1;
-    /* Faz o card crescer para preencher o link <a> */
     width: 100%;
-    /* Garante a largura total */
     display: flex;
     flex-direction: column;
 }
@@ -201,9 +195,6 @@ header {
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-.file-card {
     background: white;
     border: 1px solid var(--border);
     border-radius: 12px;
@@ -250,10 +241,8 @@ header {
 
 .img-type img {
     width: 64px;
-    /* Tamanho fixo do ícone */
     height: 64px;
     object-fit: contain;
-
 }
 
 /* Ícone de Imagem (usado no ZIP) */
@@ -293,7 +282,6 @@ header {
     width: 100%;
     height: 100%;
     background: rgba(44, 62, 80, 0.6);
-    /* Fundo um pouco mais escuro para foco */
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -314,7 +302,6 @@ header {
     max-height: 90vh;
 }
 
-/* Maximizar Modal */
 .modal-window.maximized {
     width: 98vw !important;
     height: 98vh !important;
@@ -322,7 +309,6 @@ header {
     max-height: none !important;
 }
 
-/* Cabeçalho do Modal */
 .modal-header {
     padding: 15px 20px;
     border-bottom: 1px solid var(--border);
@@ -331,10 +317,8 @@ header {
     align-items: center;
     background: #fcfcfc;
     z-index: 10;
-    /* Garante que fique acima da imagem */
     position: relative;
     flex-shrink: 0;
-    /* Impede que o cabeçalho seja esmagado */
 }
 
 .modal-header span {
@@ -342,40 +326,28 @@ header {
     font-size: 0.9rem;
 }
 
-/* Corpo do Modal - Onde a mágica acontece */
 .modal-body {
     padding: 0;
     flex: 1;
     overflow: auto;
-    /* Permite rolar a imagem */
     display: flex;
     align-items: flex-start;
-    /* FIX: Alinha imagem ao TOPO, não ao centro */
     justify-content: center;
     position: relative;
     background-color: #1a1a1a;
-    /* Fundo escuro para imagens */
 }
 
-/* Imagem com Zoom */
 #modal-image {
     max-width: 95%;
-    /* Começa quase cheia, mas com margem */
     max-height: 85vh;
-    /* Limita altura inicial */
     margin-top: 20px;
-    /* Espaço para não colar no cabeçalho */
     margin-bottom: 20px;
-
     transform-origin: top left;
-    /* FIX: O zoom cresce para baixo */
-
     transition: transform 0.2s ease;
     cursor: default;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Botões de Controle */
 .modal-controls {
     display: flex;
     gap: 10px;
@@ -390,7 +362,6 @@ header {
     cursor: pointer;
     font-weight: bold;
     display: none;
-    /* Controlado via JS */
 }
 
 .tool-btn:hover {
@@ -405,10 +376,9 @@ header {
     margin-left: 10px;
 }
 
-* Estilo para arquivos PDF com cadeado */ .locked-file {
+.locked-file {
     position: relative;
     opacity: 0.7;
-    /* Dá um aspecto de arquivo protegido */
 }
 
 .lock-small {
@@ -425,17 +395,16 @@ header {
 .locked-file:hover {
     opacity: 1;
     border-color: #080707 !important;
-    /* Destaque em vermelho ao passar o mouse */
 }
 
 /* === AJUSTES PARA CELULAR E TABLET (Responsividade) === */
 /* === CORREÇÃO MOBILE DEFINITIVA (REVISADA) === */
-@media (max-width: 768px) or (max-height: 500px) {
+@media (max-width: 768px) or (max-height: 550px) { /* ALTERAÇÃO: Aumentei para 550px para capturar mais aparelhos em landscape */
     /* --- LAYOUT DA NUVEM --- */
     body {
         flex-direction: column;
-        height: auto;
-        overflow-y: auto;
+        height: 100vh; /* ALTERAÇÃO: Mantém a altura fixa para evitar que o site suma ao rolar */
+        overflow: hidden;
     }
 
     .sidebar {
@@ -445,8 +414,18 @@ header {
         border-right: none;
         border-bottom: 1px solid var(--border);
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row; /* ALTERAÇÃO: No mobile/landscape, itens ficam lado a lado */
+        align-items: center;
+        justify-content: space-between;
+        overflow-y: visible; /* ALTERAÇÃO: Remove rolagem vertical da barra quando ela vira barra de topo */
+    }
+
+    .brand {
+        margin-bottom: 0; /* ALTERAÇÃO: Remove o espaçamento de desktop */
+    }
+
+    .brand span {
+        display: none; /* ALTERAÇÃO: Esconde o texto da marca para sobrar espaço no topo */
     }
 
     .menu {
@@ -455,6 +434,8 @@ header {
         white-space: nowrap;
         gap: 8px;
         padding: 5px 0;
+        margin: 0 10px; /* ALTERAÇÃO: Espaço entre a logo e o fim da tela */
+        flex: 1; /* ALTERAÇÃO: Faz o menu ocupar o espaço central */
     }
 
     .menu li {
@@ -465,13 +446,19 @@ header {
         margin-bottom: 0;
     }
 
-    .user-profile { display: none; }
-    .main-area { padding: 15px; flex: none; }
+    .profiles-area,
+    .user-profile { display: none; } /* ALTERAÇÃO: Esconde nomes/fotos no mobile para ganhar espaço vertical */
+    
+    .main-area { 
+        padding: 15px; 
+        flex: 1; /* ALTERAÇÃO: Ocupa o restante da tela */
+        overflow-y: auto; 
+    }
+    
     .file-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     /* --- MODAL DA IMAGEM (CONSERTO DO X E TRAVAMENTO) --- */
 
-    /* Força o fechamento quando a classe hidden for aplicada */
     #modal-overlay.hidden {
         display: none !important;
     }
@@ -492,7 +479,7 @@ header {
     .modal-window, 
     .modal-window.maximized {
         position: relative !important;
-        top: 30px !important; /* Espaço para fugir da barra do navegador */
+        top: 30px !important;
         width: 100% !important;
         height: calc(100% - 30px) !important;
         border-radius: 20px 20px 0 0 !important;
@@ -515,7 +502,6 @@ header {
         flex-shrink: 0;
     }
 
-    /* Título limitado para não bater no X */
     #modal-title {
         font-size: 0.85rem !important;
         color: #000 !important;
@@ -527,7 +513,6 @@ header {
         display: block !important;
     }
 
-    /* Container do botão X */
     .modal-controls {
         display: flex !important;
         align-items: center !important;
@@ -535,12 +520,10 @@ header {
         width: 30% !important;
     }
 
-    /* Esconde os botões de zoom que você não quer no celular */
     #btn-zoom-in, #btn-zoom-out, #btn-maximize, .tool-btn {
         display: none !important;
     }
 
-    /* BOTÃO FECHAR (X) - Ocupando o canto superior direito */
     .close-btn {
         display: flex !important;
         align-items: center !important;
@@ -578,10 +561,9 @@ header {
     left: 10%;
 }
 
-/* Força o iframe a ocupar todo o espaço do window-content */
 #pdf-frame {
     width: 100%;
     height: 100%;
-    flex: 1;                 /* Garante que ele estique */
+    flex: 1;
     border: none;
 }
