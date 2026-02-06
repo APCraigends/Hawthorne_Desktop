@@ -614,3 +614,32 @@ audio {
         transform: translate(-50%, -50%) !important;
     }
 }
+/* No final do seu style.css, adicione ou atualize estas regras */
+
+/* Ajuste para o Desktop no Mobile Landscape */
+@media (max-width: 930px) and (orientation: landscape) {
+    #desktop-screen {
+        overflow-y: auto !important; /* Permite rolar o desktop se os ícones sumirem */
+        height: 100vh;
+    }
+    .icon-grid {
+        height: auto !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+
+
+/* Estilo visual para pastas com cadeado (reaproveitando o que já existe) */
+.desktop-icon.locked {
+    opacity: 0.8;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    font-size: 14px;
+    filter: drop-shadow(0 0 2px black);
+}
+}
