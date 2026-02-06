@@ -628,7 +628,7 @@ audio {
         flex-wrap: wrap !important;
         justify-content: center;
     }
-
+}
 
 /* Estilo visual para pastas com cadeado (reaproveitando o que já existe) */
 .desktop-icon.locked {
@@ -642,4 +642,4 @@ audio {
     font-size: 14px;
     filter: drop-shadow(0 0 2px black);
 }
-}
+
