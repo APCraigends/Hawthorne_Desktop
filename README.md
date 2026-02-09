@@ -10,7 +10,7 @@
   <h3>Clube do Lobo: Aliança Proibida</h3>
   <p>Um thriller de <strong>A. P. Craigends</strong></p>
   
-  <a href="LINK_DA_AMAZON_AQUI">📖 Adquira o Livro</a> | <a href="https://apcraigends.github.io/Hawthorne_Desktop">💻 Acessar o Desktop do Daniel</a>
+  <a href="https://www.amazon.com.br/dp/B0GMKF1Z7V">📖 Adquira o Livro</a> | <a href="https://apcraigends.github.io/Hawthorne_Desktop">💻 Acessar o Desktop do Daniel</a>
 </div>
 
 ---
